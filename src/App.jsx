@@ -23,10 +23,10 @@ function App() {
 
   return (
     <>
-      <h1>Todo list</h1>
+      <h1>My daily tasks</h1>
       <input
         type="text"
-        placeholder="Add todo"
+        placeholder="Add task"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
         onKeyDown={handleOnKeyDown}
