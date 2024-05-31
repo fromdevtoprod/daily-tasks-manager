@@ -1,4 +1,4 @@
-# A simple TodoList, based on React + Vite
+# A tool to manage daily tasks
 
 ## Installation
 
