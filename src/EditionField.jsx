@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { isEnterKey } from "./helpers";
+import { isEnterKey, isEscapeKey } from "./helpers";
 
 export function EditionField({ editTodo, isCompleted, text }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -8,6 +8,7 @@ export function EditionField({ editTodo, isCompleted, text }) {
 
   function handleOnKeyDown(e) {
     if (isEnterKey(e)) return editTodo(newText);
+    if (isEscapeKey(e)) return setIsEditing(false);
   }
 
   if (isEditing) {
@@ -18,6 +19,7 @@ export function EditionField({ editTodo, isCompleted, text }) {
           value={newText}
           onChange={(e) => setNewText(e.target.value)}
           onKeyDown={handleOnKeyDown}
+          autoFocus={true}
         />
         <button onClick={() => editTodo(newText)}>Save</button>
       </>
