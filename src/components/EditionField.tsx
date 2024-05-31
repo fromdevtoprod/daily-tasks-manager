@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { isEnterKey, isEscapeKey } from "./helpers";
+import { isEnterKey, isEscapeKey } from "../helpers";
 
 type EditionFieldProps = {
   editTodo: (newText: string) => void;

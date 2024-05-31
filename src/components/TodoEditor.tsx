@@ -1,6 +1,6 @@
-import { completeTodo, deleteTodo, editTodo } from "./actions";
+import { completeTodo, deleteTodo, editTodo } from "../actions/todo";
 import EditionField from "./EditionField";
-import { Todo } from "./models/Todo";
+import { Todo } from "../models/Todo";
 
 type TodoEditorProps = {
   todo: Todo;

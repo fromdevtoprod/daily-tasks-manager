@@ -1,10 +1,10 @@
 import { useReducer, useState } from "react";
-import { addTodo } from "./actions";
+import { addTodo } from "./actions/todo";
 import { DEFAULT_TODO_LIST } from "./constants";
 import { isEmpty, isEnterKey } from "./helpers";
 import { Todo } from "./models/Todo";
-import { todoReducer } from "./reducer";
-import TodoEditor from "./TodoEditor";
+import { todoReducer } from "./reducers/todo";
+import TodoEditor from "./components/TodoEditor";
 
 import "./App.css";
 
