@@ -1,12 +1,21 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import { isEnterKey, isEscapeKey } from "./helpers";
 
-export function EditionField({ editTodo, isCompleted, text }) {
+type EditionFieldProps = {
+  editTodo: (newText: string) => void;
+  isCompleted: boolean;
+  text: string;
+};
+
+export default function EditionField({
+  editTodo,
+  isCompleted,
+  text,
+}: EditionFieldProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
 
-  function handleOnKeyDown(e) {
+  function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (isEnterKey(e)) return editTodo(newText);
     if (isEscapeKey(e)) return setIsEditing(false);
   }
@@ -28,14 +37,8 @@ export function EditionField({ editTodo, isCompleted, text }) {
 
   return (
     <>
-      <span className={isCompleted ? "isCompleted" : null}>{text}</span>
+      <span className={isCompleted ? "isCompleted" : undefined}>{text}</span>
       <button onClick={() => setIsEditing(true)}>Edit</button>
     </>
   );
 }
-
-EditionField.propTypes = {
-  editTodo: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-  isCompleted: PropTypes.bool.isRequired,
-};

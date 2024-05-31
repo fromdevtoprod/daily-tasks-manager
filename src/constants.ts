@@ -6,7 +6,10 @@ export const DEFAULT_TODO_LIST = [
   { id: 5, text: "Add a11y tests", isCompleted: false },
   { id: 6, text: "Make a production build", isCompleted: false },
   { id: 7, text: "Deploy to production", isCompleted: false },
-  { id: 8, text: "Celebrate", isCompleted: false },
+  { id: 8, text: "Create a browser extension", isCompleted: false },
+  { id: 9, text: "Create a mobile app", isCompleted: false },
+  { id: 10, text: "Add a dark mode", isCompleted: false },
+  { id: 11, text: "Celebrate", isCompleted: false },
 ];
 
 export const ADD_TODO = "ADD_TODO";

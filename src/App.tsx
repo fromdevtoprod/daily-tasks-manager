@@ -2,12 +2,13 @@ import { useReducer, useState } from "react";
 import { addTodo } from "./actions";
 import { DEFAULT_TODO_LIST } from "./constants";
 import { isEmpty, isEnterKey } from "./helpers";
+import { Todo } from "./models/Todo";
 import { todoReducer } from "./reducer";
-import { Todo } from "./Todo";
+import TodoEditor from "./TodoEditor";
 
 import "./App.css";
 
-function App() {
+export default function App() {
   const [newTodo, setNewTodo] = useState("");
   const [state, dispatch] = useReducer(todoReducer, DEFAULT_TODO_LIST);
 
@@ -17,7 +18,7 @@ function App() {
     setNewTodo("");
   }
 
-  function handleOnKeyDown(e) {
+  function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (isEnterKey(e)) return handleAddTodo();
   }
 
@@ -33,8 +34,8 @@ function App() {
       />
       <button onClick={handleAddTodo}>Add</button>
       <ul>
-        {state.map((todo) => (
-          <Todo
+        {state.map((todo: Todo) => (
+          <TodoEditor
             key={`${todo.id}-${todo.text}`}
             todo={todo}
             dispatch={dispatch}
@@ -44,5 +45,3 @@ function App() {
     </>
   );
 }
-
-export default App;
