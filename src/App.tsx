@@ -6,8 +6,6 @@ import { Todo } from "./models/Todo";
 import { todoReducer } from "./reducers/todo";
 import TodoEditor from "./components/TodoEditor";
 
-import "./App.css";
-
 export default function App() {
   const [newTodo, setNewTodo] = useState("");
   const [state, dispatch] = useReducer(todoReducer, DEFAULT_TODO_LIST);
@@ -24,7 +22,7 @@ export default function App() {
 
   return (
     <>
-      <h1>My daily tasks</h1>
+      <h1 className="text-3xl font-bold underline">My daily tasks</h1>
       <input
         type="text"
         placeholder="Add task"
