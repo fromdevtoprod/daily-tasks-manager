@@ -1,45 +1,26 @@
-import { useReducer, useState } from "react";
-import { addTodo } from "./actions/todo";
-import { DEFAULT_TODO_LIST } from "./constants";
-import { isEmpty, isEnterKey } from "./helpers";
-import { Todo } from "./models/Todo";
-import { todoReducer } from "./reducers/todo";
-import TodoEditor from "./components/TodoEditor";
+import { useReducer } from "react";
+import { addTask } from "./actions/task";
+import { DEFAULT_TASK_LIST } from "./constants";
+import { Task } from "./models/Task";
+import { taskReducer } from "./reducers/task";
+import TaskEditor from "./components/TaskEditor";
+import AddTask from "./components/AddTask";
 
 export default function App() {
-  const [newTodo, setNewTodo] = useState("");
-  const [state, dispatch] = useReducer(todoReducer, DEFAULT_TODO_LIST);
-
-  function handleAddTodo() {
-    if (isEmpty(newTodo)) return;
-    dispatch(addTodo(newTodo));
-    setNewTodo("");
-  }
-
-  function handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (isEnterKey(e)) return handleAddTodo();
-  }
-
+  const [state, dispatch] = useReducer(taskReducer, DEFAULT_TASK_LIST);
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">My daily tasks</h1>
-      <input
-        type="text"
-        placeholder="Add task"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        onKeyDown={handleOnKeyDown}
-      />
-      <button onClick={handleAddTodo}>Add</button>
-      <ul>
-        {state.map((todo: Todo) => (
-          <TodoEditor
-            key={`${todo.id}-${todo.text}`}
-            todo={todo}
+    <div className="max-w-md mx-auto">
+      <h1 className="text-3xl text-center font-bold underline">My tasks</h1>
+      <AddTask onAddTask={(newTask: string) => dispatch(addTask(newTask))} />
+      <ul className="mt-10">
+        {state.map((task: Task) => (
+          <TaskEditor
+            key={`${task.id}-${task.text}`}
+            task={task}
             dispatch={dispatch}
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 }

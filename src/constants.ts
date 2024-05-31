@@ -1,4 +1,4 @@
-export const DEFAULT_TODO_LIST = [
+export const DEFAULT_TASK_LIST = [
   { id: 1, text: "Learn React", isCompleted: true },
   { id: 2, text: "Add e2e tests", isCompleted: false },
   { id: 3, text: "Add unit tests for reducer", isCompleted: false },
